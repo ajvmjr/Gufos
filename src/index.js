@@ -4,9 +4,30 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+import Categoria from './pages/Categoria';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Evento from './pages/Evento';
+import Usuario from './pages/Usuario';
+
+const Rotas = (
+    <Router>
+        <div>
+            <Switch>
+                <Route exact path= '/' component = {App}/>
+                <Route path="/categorias" component = {Categoria}/>
+                <Route path="/login" component = {Login}/>
+                <Route path="/eventos" component = {Evento}/> 
+                <Route path ="/usuarios" component = {Usuario}/>
+                <Route component={NotFound}/>
+            </Switch>
+        </div>
+    </Router>
+)
+
+//Trocar renderização
+ReactDOM.render(Rotas, document.getElementById('root'));
+
 serviceWorker.unregister();
